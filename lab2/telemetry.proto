@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message Telemetry {
+  uint32 power       = 1;   // Вт
+  uint32 lux         = 2;   // освітленість, лк
+  int32  temperature = 3;   // °C
+  bool   alert       = 4;
+  bool   overheat    = 5;
+  bool   low_pr      = 6;   // у JSON - "low PR"
+}

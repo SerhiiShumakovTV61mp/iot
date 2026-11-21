@@ -1,0 +1,6 @@
+power: 274
+lux: 90000
+temperature: 45
+alert: false
+overheat: false
+low_pr: false
