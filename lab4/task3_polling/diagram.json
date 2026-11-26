@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "author": "Shumakov",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "btn1", "top": -80, "left": 180, "attrs": { "color": "green", "bounce": "0" } },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": 150, "left": 200, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "btn1:1.l", "esp:27", "green", [] ],
+    [ "btn1:2.l", "esp:GND.2", "black", [] ],
+    [ "logic1:D0", "esp:27", "blue", [] ],
+    [ "logic1:GND", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
