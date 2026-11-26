@@ -1,0 +1,18 @@
+services:
+  broker:
+    image: eclipse-mosquitto:2
+    volumes: ["./mosquitto.conf:/mosquitto/config/mosquitto.conf:ro"]
+    ports: ["1883:1883"]
+    networks: [iot]
+
+  client:
+    image: python:3.12-slim
+    depends_on: [broker]
+    cap_add: ["NET_ADMIN"]          # потрібен для tc netem (імітація втрат)
+    volumes: ["./:/work"]
+    working_dir: /work
+    networks: [iot]
+    command: sleep infinity
+
+networks:
+  iot:
