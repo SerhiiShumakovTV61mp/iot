@@ -1,0 +1,26 @@
+# Обидва джерела підключаються автоматично при старті Grafana
+apiVersion: 1
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    url: http://influxdb:8086
+    jsonData:
+      version: Flux
+      organization: kpi
+      defaultBucket: solar
+    secureJsonData:
+      token: ${INFLUX_TOKEN}
+
+  - name: TimescaleDB
+    type: grafana-postgresql-datasource
+    access: proxy
+    url: timescaledb:5432
+    user: postgres
+    jsonData:
+      database: solar
+      sslmode: disable
+      timescaledb: true
+      postgresVersion: 1600
+    secureJsonData:
+      password: ${PG_PASSWORD}
